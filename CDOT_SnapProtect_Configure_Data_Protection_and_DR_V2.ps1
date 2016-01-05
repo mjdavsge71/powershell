@@ -1,6 +1,5 @@
 @"
 ===============================================================================
-TESTING123
 Title: 			CDOT_SnapProtect_Configure_Data_Protection_and_DR_v2.ps1
 Description: 	Set up voloume(s) data protection with SnapMirrors in SnapProtect 
 Requirements: 	Windows Powershell and the Netapp Powershell Toolkit
