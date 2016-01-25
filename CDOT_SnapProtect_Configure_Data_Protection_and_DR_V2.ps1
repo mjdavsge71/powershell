@@ -1,15 +1,15 @@
 @"
 ===============================================================================
-Title: 			CDOT_SnapProtect_Configure_Data_Protection_and_DR_v2.ps1
+Title: 		CDOT_SnapProtect_Configure_Data_Protection_and_DR_v2.ps1
 Description: 	Set up voloume(s) data protection with SnapMirrors in SnapProtect 
 Requirements: 	Windows Powershell and the Netapp Powershell Toolkit
-Author: 		Matthew Savage
+Author: 	Matthew Savage
 Version:        V2.1
 Changes:
-11/11/2015 - Matthew Savage:  Changed script to accomidate SP 12
+11/11/2015 - Matthew Savage:  Changed script to accomidate changes due to v10 SP 11
                               Switched from qmodify to qoperation for policy to subclient association
-					          Added in additional variables to accomidate difference between sites
-						      Added additional arguments to Invoke-Command statements for compatibility with Redhill/Scotsdale
+			      Added in additional variables to accomidate difference between sites
+			      Added additional arguments to Invoke-Command statements for compatibility with Remote Sites
 		
 ===============================================================================
 "@
@@ -24,9 +24,9 @@ $prodcluster = Read-Host "Enter the Production CDOT Cluster Name: ie. MTSL1NTAPC
 $prodsvm = Read-Host "Enter Production CDOT SVM Name: ie. HL112L1SANC02"
 # Pulling in NetApp credentials
 $netappcreds = Get-Credential -Message "Enter your NetApp Credentials for $prodcluster"
-#Sets
+#Sets the OCUM server instance
 $ocum = "MTSSPRDFM14.mts.ln"
-# Convert NetApp Array name to SP Friendly Client Name
+# Convert NetApp Array name to SP Friendly Client Name, setup default commserve, media agent, disk library
 switch ($prodcluster)
     {
         "MTSL1NTAPC01" {$spclustnm = "MTSL1NTAPC01-SPR-CDOT";$commsrv = "mtsl1spc01";$cmdpath ="e:\cli";$SPMA = "MTSL1SPV01-SPR-VSA";$SPSP = "MTSL1SPV01";$SPDL = "DL_MTSL1SPV01_Network"}
@@ -60,6 +60,7 @@ return
 ForEach ($vol in $volumes){
         $randSnapschedday = Get-Random -Input "00", "05"
         $randomSnapsched = Get-Random -Input "00", "05", "10", "15"
+        # SMsched is a work in progress...not being invoked in this version of the script
         $randomSMsched = Get-Random -Input "00", "05", "10", "15", "20", "25", "30", "35", "40", "45", "50", "55"
         $contentpath = "'/" + $prodsvm + "/" + $vol + "'"
         #Creating Subclient
@@ -107,8 +108,9 @@ ForEach ($vol in $volumes){
                             } -argumentlist $storagepol
                         }
             }
+        #This is the place for the SM scheduling code once I figure it out
         #Invoke-Command -computername mtsl1spc01.mts.ln -scriptblock {
-        #qoperation execute -af e:\cli\sp_copycreation.xml -storagePolicyName $args[0] -copyName SnapMirror -libraryName DL_MTSL1SPV01_Network -mediaAgentName mtsl1spv01-SPR-VSA -resourcePoolsList/operation 'ADD' -resourcePoolsList/resourcePoolName $args[1] -provisioningPolicyName 'SnapMirror Destination' -sourceCopy/copyName 'Primary(Snap)' -isSnapCopy 1 -isMirrorCopy 1
+        #qoperation execute -af ???????
         #} -argumentlist $storagepol
 
         #Discovering LUN name for New Naming Standard
