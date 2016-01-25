@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<App_UpdateStoragePolicyCopyReq>
+    <storagePolicyCopyInfo>
+        <StoragePolicyCopy>
+			<copyName></copyName>
+			<storagePolicyName></storagePolicyName>
+		</StoragePolicyCopy>
+		<retentionRules>
+			<extendedRetentionRuleOne>
+				<endDays>30</endDays>
+				<graceDays>0</graceDays>
+				<isEnabled>1</isEnabled>
+				<rule>EXTENDED_ALLFULL</rule>
+			</extendedRetentionRuleOne>
+			<extendedRetentionRuleTwo>
+				<endDays>365</endDays>
+				<graceDays>1</graceDays>
+				<isEnabled>2</isEnabled>
+				<rule>EXTENDED_WEEK</rule>
+			</extendedRetentionRuleTwo>
+			<extendedRetentionRuleThree>
+				<endDays>1825</endDays>
+				<graceDays>2</graceDays>
+				<isEnabled>2</isEnabled>
+				<rule>EXTENDED_MONTH</rule>
+			</extendedRetentionRuleThree>
+			<financialCalendarXML>
+				<calendarId>1</calendarId>
+				<monthStartsOn>1</monthStartsOn>
+				<startingMonthOfYear>JANUARY</startingMonthOfYear>
+				<weekStartsOn>FRIDAY</weekStartsOn>
+			</financialCalendarXML>
+        </retentionRules>
+	</storagePolicyCopyInfo>
+</App_UpdateStoragePolicyCopyReq>	
