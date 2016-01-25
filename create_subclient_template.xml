@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<App_CreateSubClientRequest>
+	<subClientProperties>
+		<subClientEntity>
+			<appName>NAS</appName>
+			<clientName />
+			<subclientName />
+		</subClientEntity>
+		
+		<contentOperationType />
+		<content>
+			<path />
+		</content>
+		<content>
+			<excludePath />
+		</content>
+	
+		<commonProperties>
+			<encryptionFlag />
+			<description />
+			<enableBackup />
+			<numberOfBackupStreams/>
+			<storageDevice>
+				<networkAgents />
+				<softwareCompression />
+				<throttleNetworkBandwidth />
+				<dataBackupStoragePolicy>
+					<storagePolicyName />
+				</dataBackupStoragePolicy>
+				<deDuplicationOptions>
+					<enableDeduplication />
+					<generateSignature />
+				</deDuplicationOptions>
+			</storageDevice>
+			<snapCopyInfo>
+				<isSnapBackupEnabled/>
+				<snapToTapeSelectedEngine>
+					<snapShotEngineName/>
+				</snapToTapeSelectedEngine>
+			</snapCopyInfo>
+			<prepostProcess>
+				<preBackupCommand />
+				<postBackupCommand />
+				<runPostBackup />
+				<runAs />
+				<prepostUserName>
+					<userName />
+				</prepostUserName>
+			</prepostProcess>
+		</commonProperties>
+	</subClientProperties>
+</App_CreateSubClientRequest>
