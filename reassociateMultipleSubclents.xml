@@ -1,0 +1,23 @@
+<App_ReassociateStoragePolicyReq>
+	<forceNextBkpToFull>1</forceNextBkpToFull>
+	<currentStoragePolicy>
+		<storagePolicyName></storagePolicyName>
+	</currentStoragePolicy>
+	<newStoragePolicy>
+		<storagePolicyName></storagePolicyName>
+	</newStoragePolicy>
+    <subClients>
+		<clientName></clientName>
+		<appName></appName>
+		<instanceName></instanceName>
+		<backupsetName></backupsetName>
+		<subclientName></subclientName>
+	</subClients>
+    <!--subClients>
+		<clientName></clientName>
+		<appName></appName>
+		<instanceName></instanceName>
+		<backupsetName></backupsetName>
+		<subclientName></subclientName>
+	</subClients-->
+</App_ReassociateStoragePolicyReq>
